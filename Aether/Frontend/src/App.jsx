@@ -1,5 +1,6 @@
 import "./App.css";
 import Lightfall from "./Lightfall";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
         position: "relative",
       }}
     >
+      <Navbar />
+
       <Lightfall
         colors={["#A6C8FF", "#5227FF", "#FF9FFC"]}
         backgroundColor="#0A29FF"
@@ -38,7 +41,7 @@ function App() {
           zIndex: 10,
         }}
       >
-        <h1>Hello World</h1>
+        <h1>Aether</h1>
       </div>
     </div>
   );
