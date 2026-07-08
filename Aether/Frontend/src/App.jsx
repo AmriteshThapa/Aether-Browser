@@ -1,6 +1,7 @@
 import "./App.css";
 import Lightfall from "./Lightfall";
 import Navbar from "./components/Navbar/Navbar";
+import DecodeText from "./DecodeText";
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
           zIndex: 10,
         }}
       >
-        <h1>Aether</h1>
+        <h1><DecodeText text="Aether" speed={70} lockEvery={6} /></h1>
       </div>
     </div>
   );
