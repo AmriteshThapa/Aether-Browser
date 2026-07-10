@@ -1,9 +1,9 @@
 .navbar {
   position: fixed;
-  top: 20px;
+  top: 60px; /* Changed from 20px to 60px to move it below tab bar */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: 999; /* Lower than tab bar (1000) but above content */
   animation: navDropIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
