@@ -39,7 +39,7 @@ function ChevronIcon() {
   );
 }
 
-export default function AppMenuPanel({ onClose, userEmail = "amriteshthapa2@gmail.com" }) {
+export default function AppMenuPanel({ onClose, userEmail = "aether@gmail.com" }) {
   const panelRef = useRef(null);
   const [zoom, setZoom] = useState(100);
 

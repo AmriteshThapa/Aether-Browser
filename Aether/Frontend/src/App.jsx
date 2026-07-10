@@ -2,6 +2,7 @@ import "./App.css";
 import Lightfall from "./Lightfall";
 import Navbar from "./components/Navbar/Navbar";
 import DecodeText from "./DecodeText";
+import WeatherCard from "./components/WeatherCard/WeatherCard";   
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       }}
     >
       <Navbar />
+      <WeatherCard/>
 
       <Lightfall
         colors={["#A6C8FF", "#5227FF", "#FF9FFC"]}
