@@ -1,17 +1,19 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import AppMenuButton from "../AppMenuButton/Appmenubutton";
 import AppMenuPanel from "../AppMenuPanel/AppMenuPanel";
 
 const NAV_ITEMS = [
-  { id: "home", label: "Home", icon: <path d="M3 11.5 12 4l9 7.5M5 10v10h5v-6h4v6h5V10" /> },
-  { id: "explore", label: "Explore", icon: <><circle cx="12" cy="12" r="9" /><path d="m15 9-2 6-6 2 2-6z" /></> },
-  { id: "activity", label: "Activity", icon: <path d="M3 12h4l2-8 4 16 2-8h6" /> },
-  { id: "profile", label: "Profile", icon: <><circle cx="12" cy="8" r="4" /><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6" /></> },
+  { id: "home", label: "Home", path: "/", icon: <path d="M3 11.5 12 4l9 7.5M5 10v10h5v-6h4v6h5V10" /> },
+  { id: "explore", label: "Explore", path: "/explore", icon: <><circle cx="12" cy="12" r="9" /><path d="m15 9-2 6-6 2 2-6z" /></> },
+  { id: "activity", label: "Activity", path: "/activity", icon: <path d="M3 12h4l2-8 4 16 2-8h6" /> },
+  { id: "profile", label: "Profile", path: "/profile", icon: <><circle cx="12" cy="8" r="4" /><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6" /></> },
 ];
 
 export default function Navbar() {
-  const [active, setActive] = useState("home");
+  const navigate = useNavigate();
+  const location = useLocation();
   const [aiPulse, setAiPulse] = useState(false);
   const [query, setQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -34,14 +36,14 @@ export default function Navbar() {
           {NAV_ITEMS.map((item) => (
             <li key={item.id}>
               <button
-                className={`nav-btn ${active === item.id ? "active" : ""}`}
-                onClick={() => setActive(item.id)}
+                className={`nav-btn ${location.pathname === item.path ? "active" : ""}`}
+                onClick={() => navigate(item.path)}
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   {item.icon}
                 </svg>
                 <span>{item.label}</span>
-                {active === item.id && <span className="nav-indicator" />}
+                {location.pathname === item.path && <span className="nav-indicator" />}
               </button>
             </li>
           ))}

@@ -1,50 +1,24 @@
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Lightfall from "./Lightfall";
 import Navbar from "./components/Navbar/Navbar";
-import DecodeText from "./DecodeText";
-import WeatherCard from "./components/WeatherCard/WeatherCard";   
+import Home from "./pages/Home";
+import Explore from "./pages/Explore";
+import Activity from "./pages/Activity";
+import Profile from "./pages/Profile";
+import WeatherCard from "./components/WeatherCard/WeatherCard";
 
 function App() {
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        position: "relative",
-      }}
-    >
+    <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
       <Navbar />
-      <WeatherCard/>
-
-      <Lightfall
-        colors={["#A6C8FF", "#5227FF", "#FF9FFC"]}
-        backgroundColor="#0A29FF"
-        speed={0.5}
-        streakCount={2}
-        streakWidth={1}
-        streakLength={1}
-        glow={1}
-        density={0.6}
-        twinkle={1}
-        zoom={3}
-        backgroundGlow={0.5}
-        opacity={1}
-        mouseInteraction
-        mouseStrength={0.5}
-        mouseRadius={1}
-      />
-
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          color: "white",
-          zIndex: 10,
-        }}
-      >
-        <h1><DecodeText text="Aether" speed={70} lockEvery={6} /></h1>
+      <WeatherCard />
+      <div style={{ width: "100%", height: "100%" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/activity" element={<Activity />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
       </div>
     </div>
   );
