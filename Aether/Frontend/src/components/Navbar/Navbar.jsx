@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./Navbar.css";
+import AppMenuButton from "../AppMenuButton/Appmenubutton";
+import AppMenuPanel from "../AppMenuPanel/AppMenuPanel";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home", icon: <path d="M3 11.5 12 4l9 7.5M5 10v10h5v-6h4v6h5V10" /> },
@@ -12,6 +14,7 @@ export default function Navbar() {
   const [active, setActive] = useState("home");
   const [aiPulse, setAiPulse] = useState(false);
   const [query, setQuery] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleAiClick = () => {
     setAiPulse(true);
@@ -21,11 +24,12 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-glass">
-        <div className="navbar-brand">
+        <div className="navbar-brand" style={{ position: "relative" }}>
+          <AppMenuButton onClick={() => setMenuOpen((o) => !o)} />
+          {menuOpen && <AppMenuPanel onClose={() => setMenuOpen(false)} />}
           <span className="brand-dot" />
           <span className="brand-text">Lightfall</span>
         </div>
-
         <ul className="navbar-items">
           {NAV_ITEMS.map((item) => (
             <li key={item.id}>
@@ -42,7 +46,6 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-
         <div className="navbar-search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="7" />
@@ -55,7 +58,6 @@ export default function Navbar() {
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
-
         <button
           className={`ai-btn ${aiPulse ? "pulse" : ""}`}
           onClick={handleAiClick}
