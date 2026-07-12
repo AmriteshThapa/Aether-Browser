@@ -1,5 +1,6 @@
 import Lightfall from "../Lightfall";
 import DecodeText from "../DecodeText";
+import AetherSearch from "../components/AetherSearch/AetherSearch";
 
 export default function Home() {
   return (
@@ -30,11 +31,13 @@ export default function Home() {
           transform: "translate(-50%, -50%)",
           color: "white",
           zIndex: 10,
+          textAlign: "center",
         }}
       >
         <h1>
           <DecodeText text="Aether" speed={70} lockEvery={6} />
         </h1>
+        <AetherSearch />
       </div>
     </div>
   );
